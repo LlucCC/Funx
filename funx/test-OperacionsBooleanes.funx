@@ -1,0 +1,46 @@
+
+Fibo n {
+    if n == 0 or n == 1 {n}
+    (Fibo n - 1) + (Fibo n - 2)
+}
+
+
+SigneIgual x y {
+    if x > 0 <-> y > 0 {1}
+    0
+}
+
+Entre1i10 x {
+    if x >= 1 and x <= 10 {x}
+    -1
+}
+
+Entre1i10Dos x {
+    if not ((Entre1i10 x) == -1) {x*2}
+    -1
+}
+
+#Si x es negativa llavors entrarà en el if
+SiPositiuLlavosMajorADeu x {
+    if (x > 0) -> (x > 10) {1}
+    0
+}
+
+SigneOposat x y {
+    if x > 0 xor y > 0 {1}
+    0
+}
+
+#Per fer proves:
+#Fibo 20 = 6765
+#SigneOposat 1 1 = 0
+#SigneOposat 1 (-1) = 1
+#Entre1i10 3 = 3
+#Entre1i10 11 = -1
+#Entre1i10Dos 3 = 6
+#Entre1i10Dos 11 = -1
+#SiPositiuLlavosMajorADeu -2 = 1
+#SiPositiuLlavosMajorADeu 11 = 1
+#SiPositiuLlavosMajorADeu 3 0
+#SigneIgual 1 1 = 1
+#SigneIgual 1 (-1) = 0

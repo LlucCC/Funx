@@ -1,0 +1,64 @@
+    #Aplica N vegades una funció F
+    NApply F n x {
+        i <- 0
+        res <- x
+        while i < n {
+            res <- F res
+            i <- i + 1
+        }
+        res
+    }
+
+    #Aproxima la derivada d'una funció F
+    AproxDerivada F x {
+        a <- (F (x + 1))
+        b <- (F (x - 1))
+        (a - b)/2
+    }
+
+    #Utilitza el mètode de Newton per trobar 0 aproximats de funcions 
+    Newton F x0 {
+        a <- (F x0)
+        b <- (AproxDerivada F x0)
+        (x0 - a/b)
+    }
+
+
+    #Funcions per fer proves utilitzant-les com a paràmetres
+    Doble x {
+        2 * x
+    }
+
+    Quadrat x {
+        x * x
+    }
+
+    Factorial n {
+        if n == 0 {1}
+        n * (Factorial (n - 1))
+    }
+
+    FuncioAbstracta x {
+        x ^ 5 - 2 * x ^ 4 - 3 * x ^ 2 + 8 * x - 3
+    }
+
+#Es poden utilitzar les segünets expressions per provar
+#NApply Doble 3 2 #(Out: 16)
+#NApply Factorial 20 2 #(Out: 2)
+#NApply Factorial 2 3 #(Out: (3!)! = 6! = 720)
+#NApply Factorial 2 4 #(Out: (4!)! = 24! = 620448401733239439360000)
+#AproxDerivada Quadrat x, #(Out: 2x, per a qualsevol x)
+#Newton FuncioAbstracta 10 #(Out: 9)
+#Newton FuncioAbstracta 9 #(Out: 8)
+#Newton FuncioAbstracta 8 #(Out: 7)
+#Newton FuncioAbstracta 7 #(Out: 6)
+#Newton FuncioAbstracta 6 #(Out: 5)
+#Newton FuncioAbstracta 5 #(Out: 5)
+#FuncioAbstracta 5 #(Out: 1837)
+#El metode de Newton no funciona perque funx no treballa amb decimals
+#AproxDerivada Factorial 4 #= 57 (derivada real = 36)
+#AproxDerivada Factorial 5 #= 348 (real = 204)
+#AproxDerivada Factorial 6 #= 2460 (real = 1348)
+#Sembla que la Aproximació de la Derivada es molt inprecisa per el Factorial
+#AproxDerivada FuncioAbstracta 10 #= 2460 (real = 1348)
+#AproxDerivada FuncioAbstracta 10 #= 42869 (real = 41948, només un 2% d'error aproximadament)
